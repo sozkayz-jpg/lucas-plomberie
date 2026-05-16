@@ -1,0 +1,76 @@
+---
+import { COMPANY } from "../data/company";
+
+const strongPoints = [
+  { title: "Experts certifiés", desc: "Qualibat RGE, assurance RC Pro complète" },
+  { title: "Équipement premium", desc: "Caméras thermiques, détection acoustique" },
+  { title: "Satisfaction garantie", desc: "Intervention garantie 1 an, pièces et main-d'œuvre" },
+];
+---
+
+<section class="relative py-24 md:py-28 bg-surface overflow-hidden">
+  <div class="container-site relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+      <!-- Images column -->
+      <div class="relative">
+        <!-- Main image -->
+        <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1602872030219-ad2b0d3f8f48?w=700&q=80&fit=crop"
+            alt="Salle de bain moderne rénovée par Lucas Plomberie à Lyon"
+            class="w-full aspect-[4/5] object-cover"
+            loading="lazy"
+          />
+          <!-- Badge overlay -->
+          <div class="absolute bottom-5 left-5 bg-white/90 backdrop-blur-md rounded-2xl px-5 py-3 shadow-lg">
+            <p class="text-copper font-extrabold text-2xl leading-none">{COMPANY.years}+</p>
+            <p class="text-steel-dark text-xs font-medium mt-0.5">années d'expertise</p>
+          </div>
+        </div>
+        <!-- Floating secondary image -->
+        <div class="absolute -bottom-8 -right-8 w-44 h-56 rounded-2xl overflow-hidden shadow-xl z-20 border-4 border-canvas hidden md:block">
+          <img
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&q=80&fit=crop"
+            alt="Technicien plombier professionnel au travail"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <!-- Decorative circle -->
+        <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-copper/10 z-0 hidden md:block" aria-hidden="true"></div>
+      </div>
+
+      <!-- Content column -->
+      <div class="space-y-7">
+        <span class="inline-block text-copper font-bold uppercase tracking-[0.25em] text-xs bg-copper/5 px-4 py-2 rounded-full">
+          À propos de Lucas
+        </span>
+        <h2 class="text-display text-ink">
+          L'excellence<br />
+          <span class="text-copper">au bout des doigts</span>
+        </h2>
+        <p class="text-steel-dark text-body-lg leading-relaxed max-w-lg">
+          Depuis {new Date().getFullYear() - COMPANY.years}, Lucas Plomberie redéfinit les standards du métier à Lyon. Nous investissons dans les technologies les plus avancées pour vous offrir un service d'une précision inégalée.
+        </p>
+
+        <!-- Strong points visual -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+          {strongPoints.map((point) => (
+            <div class="group bg-white rounded-2xl p-5 border border-hairline hover:border-copper/20 hover:shadow-lg transition-all duration-500">
+              <div class="w-10 h-10 rounded-xl bg-copper/8 text-copper flex items-center justify-center mb-3 group-hover:bg-copper group-hover:text-white transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h4 class="text-ink font-bold text-sm mb-1">{point.title}</h4>
+              <p class="text-steel text-xs leading-relaxed">{point.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <a href="/a-propos" class="group inline-flex items-center gap-2 text-copper hover:text-copper-deep font-bold transition-colors duration-300 pt-2">
+          Découvrir notre histoire
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

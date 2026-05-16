@@ -1,0 +1,70 @@
+---
+import { COMPANY } from "../data/company";
+---
+
+<section class="relative py-16 md:py-20 bg-copper overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden="true">
+    <svg width="100%" height="100%">
+      <defs>
+        <pattern id="dots-emergency" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="12" cy="12" r="1.5" fill="white"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots-emergency)"/>
+    </svg>
+  </div>
+
+  <!-- Decorative pipes background -->
+  <div class="absolute inset-0 opacity-[0.08]" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="50" y="40" width="300" height="18" rx="9" fill="white"/>
+      <rect x="200" y="80" width="400" height="24" rx="12" fill="white"/>
+      <rect x="500" y="50" width="250" height="20" rx="10" fill="white"/>
+      <rect x="700" y="100" width="300" height="22" rx="11" fill="white"/>
+      <rect x="900" y="60" width="200" height="18" rx="9" fill="white"/>
+      <rect x="300" y="140" width="350" height="20" rx="10" fill="white"/>
+      <rect x="800" y="150" width="300" height="18" rx="9" fill="white"/>
+      <!-- Joints -->
+      <rect x="330" y="33" width="36" height="32" rx="5" fill="white" fill-opacity="0.6"/>
+      <rect x="580" y="74" width="30" height="36" rx="5" fill="white" fill-opacity="0.6"/>
+      <rect x="680" y="94" width="36" height="34" rx="5" fill="white" fill-opacity="0.6"/>
+      <rect x="630" y="134" width="36" height="32" rx="5" fill="white" fill-opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="container-site relative z-10">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+          </span>
+          <span class="text-white/80 font-semibold uppercase tracking-[0.15em] text-sm">Urgence</span>
+        </div>
+        <p class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-[-0.03em] mb-2">
+          Une fuite ? Une panne&nbsp;?
+        </p>
+        <p class="text-copper-light text-lg font-medium">
+          On arrive en {COMPANY.delay}. Jour et nuit.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 bg-white text-copper hover:bg-ink hover:text-white px-8 py-4 rounded-btn font-bold text-base transition-all duration-300 shadow-xl"
+        >
+          Intervention urgence
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a
+          href="tel:0427000000"
+          class="inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 hover:border-white/60 px-8 py-4 rounded-btn font-bold text-base transition-all duration-300"
+        >
+          {COMPANY.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

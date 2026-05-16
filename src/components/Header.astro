@@ -1,0 +1,112 @@
+---
+import { COMPANY } from "../data/company";
+
+const currentPath = Astro.url.pathname;
+const navLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+  { href: "/blog", label: "Blog" },
+];
+const isHome = currentPath === "/";
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  class:list={[
+    "bg-canvas/80 backdrop-blur-xl border-b border-hairline/50",
+    { "bg-transparent border-transparent": isHome },
+  ]}
+  id="header"
+>
+  <div class="absolute inset-0 bg-canvas/80 backdrop-blur-xl opacity-0 transition-opacity duration-500" id="header-bg" class:list={[{ "opacity-100": !isHome }]}></div>
+
+  <nav class="container-site relative z-10 flex items-center justify-between h-16 md:h-18" aria-label="Navigation principale">
+    <!-- Logo -->
+    <a href="/" class="text-xl md:text-2xl font-extrabold tracking-tight shrink-0" class:list={[isHome ? "text-white" : "text-ink"]}>
+      Lucas<span class="text-copper">.</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-1">
+      {navLinks.map((link) => {
+        const isActive = link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+        return (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300",
+                {
+                  "bg-white text-ink shadow-sm": isActive && !isHome,
+                  "bg-white/15 text-white": isActive && isHome,
+                  "text-steel-light hover:text-white hover:bg-white/10": !isActive && isHome,
+                  "text-steel hover:text-ink hover:bg-surface": !isActive && !isHome,
+                },
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        );
+      })}
+      <li class="ml-4">
+        <a
+          href="tel:0427000000"
+          class="inline-flex items-center gap-2 bg-copper text-white px-5 py-2.5 rounded-btn font-bold text-sm hover:bg-copper-bright transition-all duration-300 shadow-lg shadow-copper/20"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          {COMPANY.phoneDisplay}
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile -->
+    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center transition-colors" class:list={[isHome ? "bg-white/10 text-white hover:bg-white/20" : "bg-surface text-ink hover:bg-hairline"]} aria-label="Menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="menu-icon-open"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-hairline bg-canvas">
+    <ul class="container-site py-4 space-y-1">
+      {navLinks.map((link) => {
+        const isActive = link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
+        return (<li><a href={link.href} class:list={["block px-4 py-3 rounded-xl text-base font-semibold transition-all", { "bg-ink text-white": isActive, "text-steel hover:text-ink hover:bg-surface": !isActive }]}>{link.label}</a></li>);
+      })}
+      <li class="pt-2"><a href="tel:0427000000" class="flex items-center justify-center gap-2 bg-copper text-white px-5 py-3 rounded-xl font-bold hover:bg-copper-bright transition-all"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>{COMPANY.phoneDisplay}</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    const isOpen = !menu.classList.contains("hidden");
+    menu.classList.toggle("hidden", isOpen);
+    btn.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Header background transition on scroll
+  const header = document.getElementById("header");
+  const headerBg = document.getElementById("header-bg");
+  if (header && headerBg && window.location.pathname === "/") {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.classList.add("border-hairline/50");
+        header.style.borderBottom = "";
+        headerBg.classList.add("opacity-100");
+      } else {
+        header.classList.remove("border-hairline/50");
+        headerBg.classList.remove("opacity-100");
+      }
+    });
+  }
+</script>
+
+<style>
+  #header {
+    view-transition-name: header;
+  }
+</style>

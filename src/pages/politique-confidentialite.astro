@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+---
+
+<BaseLayout
+  title="Politique de confidentialité"
+  description="Politique de confidentialité de Lucas Plomberie. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD."
+>
+  <Header />
+
+  <main class="pt-16">
+    <section class="section-padding bg-canvas">
+      <div class="container-site max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-ink leading-[1.1] tracking-[-0.03em] mb-4">
+          Politique de confidentialité
+        </h1>
+        <p class="text-steel mb-10">
+          Dernière mise à jour : mai 2026
+        </p>
+
+        <div class="prose prose-lg prose-copper max-w-none space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">1. Collecte des données</h2>
+            <p class="text-steel leading-relaxed">
+              Nous collectons les données que vous nous transmettez via le formulaire de contact : nom, prénom, adresse email, numéro de téléphone. Ces données sont exclusivement utilisées pour traiter votre demande et assurer le suivi de nos interventions.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">2. Finalité du traitement</h2>
+            <p class="text-steel leading-relaxed">
+              Vos données personnelles sont collectées pour :
+            </p>
+            <ul class="text-steel space-y-2 mt-2">
+              <li>Répondre à vos demandes de devis</li>
+              <li>Planifier et assurer le suivi de nos interventions</li>
+              <li>Vous tenir informé de l'avancement de votre dossier</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">3. Durée de conservation</h2>
+            <p class="text-steel leading-relaxed">
+              Vos données sont conservées pendant une durée de 3 ans à compter de notre dernier contact. Elles sont ensuite supprimées définitivement de nos systèmes.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">4. Vos droits</h2>
+            <p class="text-steel leading-relaxed">
+              Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement, de portabilité et d'opposition concernant vos données personnelles. Pour exercer ces droits, contactez-nous à contact@lucas-plomberie.fr.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">5. Cookies</h2>
+            <p class="text-steel leading-relaxed">
+              Ce site utilise uniquement des cookies techniques essentiels à son bon fonctionnement. Aucun cookie publicitaire ou de suivi n'est déposé sans votre consentement explicite.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">6. Sécurité</h2>
+            <p class="text-steel leading-relaxed">
+              Nous mettons en œuvre toutes les mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <CookieBanner />
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding-block: var(--spacing-section);
+  }
+
+  .prose-copper strong {
+    color: var(--color-ink);
+  }
+
+  .prose-copper h2 {
+    color: var(--color-ink);
+  }
+</style>

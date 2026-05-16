@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import { SERVICES } from "../../data/company";
+
+export async function getStaticPaths() {
+  return SERVICES.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+
+const images: Record<string, string> = {
+  "debouchage": "https://images.unsplash.com/photo-1542013936693-884638332954?w=1200&q=80&fit=crop",
+  "fuite-eau": "https://images.unsplash.com/photo-1521207418485-99c9086e4f58?w=1200&q=80&fit=crop",
+  "installation-sanitaire": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80&fit=crop",
+  "chauffe-eau": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80&fit=crop",
+  "detartrage": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80&fit=crop",
+  "renovation-salle-de-bain": "https://images.unsplash.com/photo-1602872030219-ad2b0d3f8f48?w=1200&q=80&fit=crop",
+};
+---
+
+<BaseLayout title={`${service.title} — Lyon`} description={service.description}>
+  <Header />
+
+  <main class="pt-16">
+    <!-- Hero -->
+    <section class="relative py-24 md:py-32 bg-ink overflow-hidden">
+      <img src={images[service.slug]} alt={service.title} class="absolute inset-0 w-full h-full object-cover opacity-25"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/60"></div>
+      <div class="container-site relative z-10">
+        <nav class="flex items-center gap-2 text-zinc-500 text-sm mb-6" aria-label="Fil d'Ariane"><a href="/" class="hover:text-white transition-colors">Accueil</a><span aria-hidden="true">/</span><a href="/#services" class="hover:text-white transition-colors">Services</a><span aria-hidden="true">/</span><span class="text-copper">{service.title}</span></nav>
+        <h1 class="text-display text-white mb-6">{service.title}</h1>
+        <p class="text-zinc-400 text-xl leading-relaxed max-w-xl">{service.fullDescription}</p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-24 md:py-28 bg-canvas">
+      <div class="container-site">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
+          <div class="space-y-8">
+            <h2 class="text-heading text-ink">Pourquoi <span class="text-copper">Lucas</span> ?</h2>
+            <div class="space-y-5">
+              {service.highlights.map((h) => (
+                <div class="flex gap-4">
+                  <div class="w-8 h-8 rounded-xl bg-copper/10 text-copper flex items-center justify-center shrink-0 mt-0.5 shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span class="text-ink font-medium leading-relaxed">{h}</span>
+                </div>
+              ))}
+            </div>
+            <a href="/contact" class="inline-flex items-center gap-2 bg-copper hover:bg-copper-bright text-white px-8 py-4 rounded-btn font-bold text-base transition-all duration-300 shadow-xl shadow-copper/20 mt-4">
+              Demander un devis gratuit
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="space-y-5">
+            <div class="rounded-[2rem] overflow-hidden shadow-2xl">
+              <img src={images[service.slug]} alt={service.title} class="w-full aspect-[4/3] object-cover" loading="lazy"/>
+            </div>
+            <div class="bg-surface rounded-2xl p-7 border border-hairline">
+              <h3 class="text-lg font-bold text-ink mb-4">Ce qui est inclus</h3>
+              <div class="grid grid-cols-2 gap-3">
+                {["Diagnostic complet", "Matériel professionnel", "Nettoyage chantier", "Rapport avec photos", "Garantie 1 an", "Conseils personnalisés"].map(item => (
+                  <div class="flex items-center gap-2 text-steel-dark text-sm font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="text-copper shrink-0"><polyline points="20 6 9 17 4 12"/></svg>{item}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <CTABanner />
+  <Footer />
+  <CookieBanner />
+</BaseLayout>

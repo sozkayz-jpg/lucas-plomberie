@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import CookieBanner from "../../components/CookieBanner.astro";
+import { BLOG_ARTICLES } from "../../data/company";
+
+export async function getStaticPaths() {
+  return BLOG_ARTICLES.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+const { article } = Astro.props;
+
+const covers: Record<string, string> = {
+  "comment-detecter-fuite-eau": "https://images.unsplash.com/photo-1521207418485-99c9086e4f58?w=1600&q=80&fit=crop",
+  "entretenir-chauffe-eau": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&q=80&fit=crop",
+  "plomberie-ecoresponsable": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80&fit=crop",
+};
+---
+
+<BaseLayout title={article.title} description={article.excerpt} type="article">
+  <Header />
+
+  <main class="pt-16">
+    <article>
+      <header class="relative pt-24 md:pt-32 pb-12 bg-ink overflow-hidden">
+        <img src={covers[article.slug] || covers["comment-detecter-fuite-eau"]} alt="" class="absolute inset-0 w-full h-full object-cover opacity-25"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/90 to-ink/60"></div>
+        <div class="container-site relative z-10">
+          <nav class="flex items-center gap-2 text-zinc-500 text-sm mb-6" aria-label="Fil d'Ariane"><a href="/" class="hover:text-white transition-colors">Accueil</a><span aria-hidden="true">/</span><a href="/blog" class="hover:text-white transition-colors">Blog</a><span aria-hidden="true">/</span><span class="text-copper">{article.title}</span></nav>
+          <time datetime={article.date} class="text-copper font-semibold text-sm block mb-4">{new Date(article.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>
+          <h1 class="text-display text-white max-w-3xl">{article.title}</h1>
+        </div>
+      </header>
+
+      <div class="py-24 md:py-28 bg-canvas">
+        <div class="container-site max-w-3xl">
+          <article class="prose prose-lg max-w-none prose-headings:text-ink prose-p:text-steel-dark prose-p:leading-relaxed prose-strong:text-ink prose-a:text-copper prose-a:no-underline hover:prose-a:text-copper-deep">
+            <Fragment set:html={article.content} />
+          </article>
+
+          <hr class="my-14 border-hairline"/>
+
+          <div class="bg-surface rounded-2xl p-8 md:p-10 border border-hairline text-center">
+            <h3 class="text-2xl font-bold text-ink mb-3">Besoin d'un professionnel ?</h3>
+            <p class="text-steel-dark mb-7">Nos experts interviennent en 45 minutes à Lyon et dans le Grand Lyon.</p>
+            <a href="/contact" class="inline-flex items-center gap-2 bg-copper hover:bg-copper-bright text-white px-8 py-4 rounded-btn font-bold transition-all duration-300 shadow-lg shadow-copper/20">Demander un devis gratuit</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <CTABanner />
+  <Footer />
+  <CookieBanner />
+</BaseLayout>

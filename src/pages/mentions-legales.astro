@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site Lucas Plomberie. Informations sur l'éditeur du site, l'hébergement et les conditions d'utilisation."
+>
+  <Header />
+
+  <main class="pt-16">
+    <section class="section-padding bg-canvas">
+      <div class="container-site max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-ink leading-[1.1] tracking-[-0.03em] mb-10">
+          Mentions légales
+        </h1>
+
+        <div class="prose prose-lg prose-copper max-w-none space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">1. Éditeur du site</h2>
+            <p class="text-steel leading-relaxed">
+              <strong>Raison sociale :</strong> Lucas Plomberie, EI<br />
+              <strong>Siège social :</strong> 47 rue de la République, 69002 Lyon<br />
+              <strong>Téléphone :</strong> 04 27 00 00 00<br />
+              <strong>Email :</strong> contact@lucas-plomberie.fr<br />
+              <strong>SIRET :</strong> 829 415 973 00019<br />
+              <strong>Directeur de la publication :</strong> Lucas Morel
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">2. Hébergement</h2>
+            <p class="text-steel leading-relaxed">
+              <strong>Hébergeur :</strong> Vercel Inc.<br />
+              <strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis<br />
+              <strong>Site web :</strong> vercel.com
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">3. Propriété intellectuelle</h2>
+            <p class="text-steel leading-relaxed">
+              L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">4. Limitation de responsabilité</h2>
+            <p class="text-steel leading-relaxed">
+              Lucas Plomberie s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site, dont elle se réserve le droit de corriger le contenu à tout moment et sans préavis. Toutefois, Lucas Plomberie ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-ink mb-4">5. Liens hypertextes</h2>
+            <p class="text-steel leading-relaxed">
+              Les liens hypertextes mis en place dans le cadre du présent site internet en direction d'autres ressources présentes sur le réseau internet ne sauraient engager la responsabilité de Lucas Plomberie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <CookieBanner />
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding-block: var(--spacing-section);
+  }
+
+  .prose-copper strong {
+    color: var(--color-ink);
+  }
+
+  .prose-copper h2 {
+    color: var(--color-ink);
+  }
+</style>

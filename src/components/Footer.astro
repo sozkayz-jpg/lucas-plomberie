@@ -1,0 +1,72 @@
+---
+import { COMPANY } from "../data/company";
+---
+
+<footer class="bg-ink text-white relative overflow-hidden" role="contentinfo">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" aria-hidden="true"></div>
+
+  <div class="container-site py-16 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <!-- Brand -->
+      <div class="lg:col-span-3">
+        <a href="/" class="text-2xl font-extrabold tracking-tight text-white inline-block mb-4">Lucas<span class="text-copper">.</span></a>
+        <p class="text-zinc-400 leading-relaxed mb-6 max-w-xs">{COMPANY.slogan}</p>
+        <div class="flex items-center gap-2">
+          {[
+            { label: "Facebook", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+            { label: "Instagram", path: "M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m.2 2A3.6 3.6 0 0 0 4.4 7.6v8.8C4.4 18.39 6.01 20 8 20h8a3.6 3.6 0 0 0 3.6-3.6V7.6C19.6 5.61 17.99 4 16 4zm9.65 1.5a1.25 1.25 0 0 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6" },
+          ].map(s => (
+            <a href={s.label === "Facebook" ? COMPANY.socials.facebook : COMPANY.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label={s.label} class="w-10 h-10 rounded-full bg-white/5 hover:bg-copper text-zinc-400 hover:text-white flex items-center justify-center transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={s.path}/></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-bold text-zinc-500 uppercase tracking-[0.2em] mb-5">Services</h3>
+        <ul class="space-y-2.5">
+          {["Débouchage", "Recherche de fuites", "Installation sanitaire", "Chauffe-eau", "Détartrage", "Rénovation salle de bain"].map(s => (
+            <li><a href={`/services/${s.toLowerCase().replace(/ /g, "-").replace("é","e").replace("è","e")}`} class="text-zinc-400 hover:text-white transition-colors text-sm">{s}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Adresse -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-bold text-zinc-500 uppercase tracking-[0.2em] mb-5">Contact</h3>
+        {COMPANY.addresses.map(addr => (
+          <div class="text-zinc-400 text-sm space-y-1">
+            <p>{addr.street}</p>
+            <p>{addr.zip} {addr.city}</p>
+            <a href={`https://maps.google.com/?q=${addr.street},${addr.zip}+${addr.city}`} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-copper-light hover:text-copper transition-colors text-xs font-medium mt-2">Voir sur Google Maps <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <p class="pt-3 font-bold text-white">{COMPANY.phoneDisplay}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Liens -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-bold text-zinc-500 uppercase tracking-[0.2em] mb-5">Liens utiles</h3>
+        <ul class="space-y-2.5">
+          {[
+            { href: "/", label: "Accueil" },
+            { href: "/a-propos", label: "À propos" },
+            { href: "/contact", label: "Contact" },
+            { href: "/blog", label: "Blog" },
+            { href: "/mentions-legales", label: "Mentions légales" },
+            { href: "/politique-confidentialite", label: "Confidentialité" },
+          ].map(l => (<li><a href={l.href} class="text-zinc-400 hover:text-white transition-colors text-sm">{l.label}</a></li>))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/5">
+    <div class="container-site py-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-zinc-600">
+      <p>&copy; {new Date().getFullYear()} {COMPANY.fullName} &mdash; Tous droits réservés.</p>
+      <p>Conçu avec exigence à Lyon</p>
+    </div>
+  </div>
+</footer>

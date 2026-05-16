@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTABanner from "../components/CTABanner.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+import { COMPANY } from "../data/company";
+
+const values = [
+  { title: "Excellence", desc: "Chaque intervention est une démonstration de notre savoir-faire. Normes strictes, pièces certifiées, contrôle qualité systématique." },
+  { title: "Transparence", desc: "Devis détaillé remis avant intervention, prix fixe annoncé à l'avance. Vous savez exactement ce que vous payez." },
+  { title: "Innovation", desc: "Nous investissons dans les technologies les plus récentes : caméras thermiques, détection acoustique, inspection 3D." },
+];
+
+const timeline = [
+  { year: String(new Date().getFullYear() - 15), title: "Fondation", desc: "Lucas Morel crée l'entreprise avec une vision : rendre la plomberie premium accessible." },
+  { year: String(new Date().getFullYear() - 10), title: "Expansion", desc: "L'équipe passe à 5 techniciens, couverture de tout le Grand Lyon." },
+  { year: String(new Date().getFullYear() - 5), title: "Innovation", desc: "Acquisition des premières caméras thermiques et détecteurs acoustiques." },
+  { year: String(new Date().getFullYear()), title: "Excellence", desc: "8 techniciens, 8000+ interventions, 350+ avis. La référence lyonnaise." },
+];
+---
+
+<BaseLayout
+  title="À propos"
+  description="Découvrez Lucas Plomberie, votre expert en plomberie à Lyon depuis 15 ans. Une équipe de professionnels qualifiés et passionnés."
+>
+  <Header />
+
+  <main class="pt-16">
+    <!-- Hero -->
+    <section class="relative py-24 md:py-32 bg-ink overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80&fit=crop" alt="Technicien Lucas Plomberie en intervention" class="absolute inset-0 w-full h-full object-cover opacity-25"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/70"></div>
+      <div class="container-site relative z-10">
+        <div class="max-w-3xl">
+          <span class="inline-block text-copper font-bold uppercase tracking-[0.25em] text-xs bg-copper/10 px-4 py-2 rounded-full mb-6 border border-copper/20">Notre histoire</span>
+          <h1 class="text-display text-white mb-6">{COMPANY.years} ans à<br/><span class="text-copper">vos côtés</span></h1>
+          <p class="text-zinc-400 text-xl leading-relaxed max-w-lg">Depuis {new Date().getFullYear() - COMPANY.years}, nous réinventons la plomberie à Lyon avec une exigence qui frôle l'obsession du détail.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-24 md:py-28 bg-canvas">
+      <div class="container-site">
+        <div class="max-w-2xl mx-auto text-center mb-16">
+          <h2 class="text-heading text-ink mb-4">Notre <span class="text-copper">parcours</span></h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {timeline.map((item, i) => (
+            <div class="relative text-center group">
+              <div class="w-14 h-14 rounded-2xl bg-copper text-white flex items-center justify-center font-extrabold text-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-copper/20">{item.year}</div>
+              <h3 class="text-ink font-bold text-sm mb-1">{item.title}</h3>
+              <p class="text-steel text-xs leading-relaxed">{item.desc}</p>
+              {i < timeline.length - 1 && (
+                <div class="hidden md:block absolute top-7 left-[60%] w-[calc(100%-2rem)] h-0.5 bg-copper/20" aria-hidden="true"></div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Values & Image -->
+    <section class="py-24 md:py-28 bg-surface">
+      <div class="container-site">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div class="rounded-[2rem] overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1602872030219-ad2b0d3f8f48?w=700&q=80&fit=crop" alt="Salle de bain design rénovée à Lyon" class="w-full aspect-[4/3] object-cover" loading="lazy"/>
+          </div>
+          <div class="space-y-8">
+            <h2 class="text-heading text-ink">Ce qui <span class="text-copper">nous anime</span></h2>
+            {values.map((v) => (
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-copper/8 text-copper flex items-center justify-center shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-ink font-bold text-lg mb-1">{v.title}</h3>
+                  <p class="text-steel leading-relaxed">{v.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certs -->
+    <section class="py-20 md:py-24 bg-copper">
+      <div class="container-site text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-12">Certifications & assurances</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          {["Qualibat RGE", "RC Professionnelle", "Garantie décennale", "Agréé Gaz"].map((cert) => (
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
+              <div class="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <p class="text-white font-bold text-sm">{cert}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <CTABanner />
+  <Footer />
+  <CookieBanner />
+</BaseLayout>

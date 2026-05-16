@@ -1,0 +1,136 @@
+---
+import { COMPANY } from "../data/company";
+
+const stats = [
+  { value: `${COMPANY.years}+`, label: "Années d'expertise" },
+  { value: "8 000+", label: "Interventions réalisées" },
+  { value: COMPANY.reviews, label: "Avis clients" },
+];
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-ink">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1542013936693-884638332954?w=1920&q=80&fit=crop"
+      alt="Tubes en cuivre et installation de plomberie professionnelle"
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      loading="eager"
+    />
+    <!-- Gradients over image -->
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/95 via-ink/75 to-ink/95"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-transparent to-ink/30"></div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-0 right-0 w-[800px] h-[800px] z-0 opacity-30">
+    <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="400" cy="400" r="380" stroke="#C7764A" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="400" cy="400" r="280" stroke="#C7764A" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="400" cy="400" r="180" stroke="#C7764A" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="400" cy="400" r="80" stroke="#C7764A" stroke-width="1" opacity="0.6"/>
+      <line x1="0" y1="400" x2="800" y2="400" stroke="#C7764A" stroke-width="0.3" opacity="0.15"/>
+      <line x1="400" y1="0" x2="400" y2="800" stroke="#C7764A" stroke-width="0.3" opacity="0.15"/>
+    </svg>
+  </div>
+
+  <!-- Geometric pipe motif (SVG) -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 z-0 opacity-10" aria-hidden="true">
+    <svg width="100%" height="128" viewBox="0 0 1440 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="100" width="200" height="12" rx="6" fill="#C7764A"/>
+      <rect x="260" y="80" width="80" height="12" rx="6" fill="#C7764A"/>
+      <rect x="400" y="90" width="300" height="16" rx="8" fill="#C7764A"/>
+      <rect x="720" y="70" width="120" height="12" rx="6" fill="#C7764A"/>
+      <rect x="880" y="95" width="250" height="16" rx="8" fill="#C7764A"/>
+      <rect x="1150" y="85" width="120" height="12" rx="6" fill="#C7764A"/>
+      <rect x="1300" y="100" width="140" height="12" rx="6" fill="#C7764A"/>
+      <!-- joints -->
+      <rect x="230" y="95" width="40" height="22" rx="4" fill="#A05A35"/>
+      <rect x="390" y="82" width="30" height="32" rx="4" fill="#A05A35"/>
+      <rect x="690" y="84" width="40" height="24" rx="4" fill="#A05A35"/>
+      <rect x="1130" y="80" width="30" height="22" rx="4" fill="#A05A35"/>
+    </svg>
+  </div>
+
+  <!-- Content -->
+  <div class="container-site relative z-10 pt-24 pb-32 md:py-32">
+    <div class="max-w-4xl">
+      <!-- Live indicator -->
+      <div class="flex items-center gap-3 mb-8 opacity-0 animate-fade-up">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-copper opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-copper"></span>
+        </span>
+        <span class="text-copper-light font-medium uppercase tracking-[0.2em] text-sm">
+          Intervention sous {COMPANY.delay} &mdash; 24h/24
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-hero text-white mb-6 opacity-0 animate-fade-up delay-100">
+        La plomberie<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-copper via-copper-bright to-copper-light">
+          repensée
+        </span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed mb-10 opacity-0 animate-fade-up delay-200">
+        {COMPANY.years} ans que nous révolutionnons la plomberie à Lyon.
+        Intervention premium, diagnostic de précision, résultat irréprochable.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-16 opacity-0 animate-fade-up delay-300">
+        <a
+          href="/contact"
+          class="group inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-bright text-white px-8 py-4.5 rounded-btn font-bold text-base transition-all duration-300 shadow-2xl shadow-copper/30 hover:shadow-copper/40 hover:scale-[1.02]"
+        >
+          Devis gratuit
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a
+          href="tel:0427000000"
+          class="group inline-flex items-center justify-center gap-2 text-white border-2 border-white/20 hover:border-white/40 hover:bg-white/5 px-8 py-4.5 rounded-btn font-semibold text-base transition-all duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          {COMPANY.phoneDisplay}
+        </a>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="flex flex-wrap gap-8 md:gap-14 pt-10 border-t border-white/10 opacity-0 animate-fade-up delay-400">
+        {stats.map((stat) => (
+          <div>
+            <div class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+              {stat.value}
+            </div>
+            <div class="text-steel-light text-sm mt-1">{stat.label}</div>
+          </div>
+        ))}
+        <!-- Google reviews badge -->
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-2">
+            {["#C7764A", "#8B7355", "#A05A35"].map((color, i) => (
+              <div class="w-10 h-10 rounded-full border-2 border-ink flex items-center justify-center text-white text-xs font-bold" style={`background-color:${color};z-index:${3-i}`}>
+                {String.fromCharCode(65 + i + stats.length)}
+              </div>
+            ))}
+          </div>
+          <div class="text-sm">
+            <div class="flex items-center gap-1 text-amber-400">
+              {[...Array(5)].map(() => (<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>))}
+            </div>
+            <span class="text-steel-light">4,9 sur Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-float hidden md:block">
+    <div class="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
+      <div class="w-1.5 h-3 rounded-full bg-copper animate-pulse-soft"></div>
+    </div>
+  </div>
+</section>

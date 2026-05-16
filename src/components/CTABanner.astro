@@ -1,0 +1,66 @@
+---
+import { COMPANY } from "../data/company";
+---
+
+<section class="relative py-20 md:py-28 bg-ink overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80&fit=crop"
+      alt=""
+      class="w-full h-full object-cover opacity-[0.12]"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Copper orb -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-copper/10 blur-[120px] z-0" aria-hidden="true"></div>
+
+  <!-- Decorative lines -->
+  <div class="absolute inset-0 z-0 opacity-10" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="100" x2="300" y2="100" stroke="#C7764A" stroke-width="1"/>
+      <line x1="350" y1="100" x2="800" y2="100" stroke="#C7764A" stroke-width="1"/>
+      <line x1="850" y1="100" x2="1200" y2="100" stroke="#C7764A" stroke-width="1"/>
+      <line x1="0" y1="200" x2="400" y2="200" stroke="#C7764A" stroke-width="1"/>
+      <line x1="450" y1="200" x2="900" y2="200" stroke="#C7764A" stroke-width="1"/>
+      <line x1="950" y1="200" x2="1200" y2="200" stroke="#C7764A" stroke-width="1"/>
+      <line x1="0" y1="300" x2="500" y2="300" stroke="#C7764A" stroke-width="1"/>
+      <line x1="550" y1="300" x2="1200" y2="300" stroke="#C7764A" stroke-width="1"/>
+      <!-- Connector dots -->
+      <circle cx="300" cy="100" r="4" fill="#C7764A"/><circle cx="350" cy="100" r="4" fill="#C7764A"/>
+      <circle cx="800" cy="100" r="4" fill="#C7764A"/><circle cx="850" cy="100" r="4" fill="#C7764A"/>
+      <circle cx="400" cy="200" r="4" fill="#C7764A"/><circle cx="450" cy="200" r="4" fill="#C7764A"/>
+      <circle cx="900" cy="200" r="4" fill="#C7764A"/><circle cx="950" cy="200" r="4" fill="#C7764A"/>
+      <circle cx="500" cy="300" r="4" fill="#C7764A"/><circle cx="550" cy="300" r="4" fill="#C7764A"/>
+    </svg>
+  </div>
+
+  <div class="container-site relative z-10 text-center">
+    <span class="inline-block text-copper font-bold uppercase tracking-[0.25em] text-xs bg-copper/10 px-4 py-2 rounded-full mb-6 text-copper-light border border-copper/20">
+      Prêt à nous contacter ?
+    </span>
+    <h2 class="text-display text-white mb-4 max-w-2xl mx-auto">
+      Un professionnel à votre service,<br class="hidden sm:block"/>
+      <span class="text-copper">en {COMPANY.delay}</span>
+    </h2>
+    <p class="text-zinc-400 text-body-lg max-w-lg mx-auto mb-10">
+      Devis gratuit, intervention rapide, résultat garanti. Votre confort commence par un appel.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="tel:0427000000"
+        class="inline-flex items-center justify-center gap-3 bg-copper hover:bg-copper-bright text-white px-9 py-5 rounded-btn font-bold text-lg transition-all duration-300 shadow-2xl shadow-copper/30 hover:shadow-copper/40 hover:scale-[1.02]"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        {COMPANY.phoneDisplay}
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 text-white border-2 border-white/20 hover:border-white/40 hover:bg-white/5 px-9 py-5 rounded-btn font-bold text-lg transition-all duration-300"
+      >
+        Devis gratuit en ligne
+      </a>
+    </div>
+  </div>
+</section>

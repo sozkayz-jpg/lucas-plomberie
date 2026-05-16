@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import AdvantageBanner from "../components/AdvantageBanner.astro";
+import AboutPreview from "../components/AboutPreview.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
+import EmergencyBanner from "../components/EmergencyBanner.astro";
+import FAQ from "../components/FAQ.astro";
+import Testimonials from "../components/Testimonials.astro";
+import BlogPreview from "../components/BlogPreview.astro";
+import CTABanner from "../components/CTABanner.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+---
+
+<BaseLayout
+  title="Plombier Lyon — Lucas Plomberie"
+  description="Expert en plomberie à Lyon depuis 15 ans. Intervention rapide en 45 minutes, disponible 24h/24 et 7j/7. Devis gratuit. Débouchage, fuite d'eau, installation sanitaire, chauffe-eau."
+>
+  <Header />
+  <main>
+    <Hero />
+    <AdvantageBanner />
+    <AboutPreview />
+    <ServicesGrid />
+    <EmergencyBanner />
+    <FAQ />
+    <Testimonials />
+    <BlogPreview />
+    <CTABanner />
+  </main>
+  <Footer />
+  <CookieBanner />
+</BaseLayout>

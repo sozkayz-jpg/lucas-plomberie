@@ -1,0 +1,59 @@
+---
+export interface SEOProps {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title,
+  description,
+  image = "/images/og-default.jpg",
+  type = "website",
+} = Astro.props;
+
+const fullTitle = `${title} | Lucas Plomberie — Lyon`;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.site).href} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Lucas Plomberie" />
+<meta property="og:locale" content="fr_FR" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.site).href} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap"
+  rel="stylesheet"
+/>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Lucas Plomberie",
+  description: "Service professionnel de plomberie à Lyon — Intervention rapide, devis gratuit.",
+  telephone: "04 27 00 00 00",
+  email: "contact@lucas-plomberie.fr",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "47 rue de la République",
+    postalCode: "69002",
+    addressLocality: "Lyon",
+    addressCountry: "FR",
+  },
+  openingHours: "Mo-Su 00:00-23:59",
+  priceRange: "€€",
+  image: new URL("/images/og-default.jpg", Astro.site).href,
+  url: Astro.site,
+})} />
